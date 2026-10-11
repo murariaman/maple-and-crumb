@@ -1,32 +1,13 @@
-import { useState } from 'react'
-import { FORM_ID } from '../config.js'
-
-// Posts to Formspree, which emails each submission to the form owner.
-// A static site (like GitHub Pages) cannot receive form data itself.
-const notConnected = FORM_ID === 'YOUR_FORM_ID'
+import { FEEDBACK_FORM_ID } from '../config.js'
+import { useFormspree } from '../lib/useFormspree.js'
 
 export default function FeedbackForm() {
-  const [status, setStatus] = useState('idle') // idle | sending | sent | error
+  const { status, notConnected, submit } = useFormspree(FEEDBACK_FORM_ID)
 
   async function onSubmit(e) {
     e.preventDefault()
-    if (notConnected) return
-    setStatus('sending')
-    try {
-      const res = await fetch(`https://formspree.io/f/${FORM_ID}`, {
-        method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: new FormData(e.target),
-      })
-      if (res.ok) {
-        setStatus('sent')
-        e.target.reset()
-      } else {
-        setStatus('error')
-      }
-    } catch {
-      setStatus('error')
-    }
+    const ok = await submit(e.target, { _subject: 'New feedback - Maple & Crumb demo' })
+    if (ok) e.target.reset()
   }
 
   if (status === 'sent') {
@@ -45,7 +26,7 @@ export default function FeedbackForm() {
       </label>
 
       <label>
-        How was your visit?
+        <span>How was your visit?</span>
         <select name="rating" defaultValue="5">
           <option value="5">5 - Loved it</option>
           <option value="4">4 - Really good</option>
@@ -56,7 +37,7 @@ export default function FeedbackForm() {
       </label>
 
       <label>
-        Your message
+        <span>Your message</span>
         <textarea name="message" rows="4" required />
       </label>
 
@@ -68,9 +49,9 @@ export default function FeedbackForm() {
       {/* Spam trap: real people never see or fill this. */}
       <input type="text" name="_gotcha" tabIndex="-1" autoComplete="off" className="hp" />
 
-      <p className="muted small">Please don't include passwords or payment details.</p>
+      <p className="muted small">Please do not include passwords or payment details.</p>
 
-      <button className="btn" type="submit" disabled={status === 'sending'}>
+      <button className="pill solid" type="submit" disabled={status === 'sending'}>
         {status === 'sending' ? 'Sending...' : 'Send feedback'}
       </button>
 
@@ -80,9 +61,7 @@ export default function FeedbackForm() {
         </p>
       )}
       {status === 'error' && (
-        <p className="notice bad" role="alert">
-          Something went wrong. Please try again in a moment.
-        </p>
+        <p className="notice bad" role="alert">Something went wrong. Please try again in a moment.</p>
       )}
     </form>
   )
