@@ -49,7 +49,7 @@ You are a friendly design interviewer. Run a short interview, then write `BRIEF.
 1. Write `BRIEF.md` with these headings: Business, Audience, Offer and single call to action, Voice, Look and feel, Palette (hex values), Type, Imagery, Features (in priority order), Orders, FAQs (draft answers marked "needs owner approval"), Avoid list, Open questions (every "TBD").
 2. Add a section **"What will make this NOT look generic"** with 5 specific decisions drawn from my answers, such as: one signature motion, a non-centered hero layout, a color story from my references, real copy in my voice, and no gradient blobs or emoji icons.
 3. Show me the brief and ask for approval or changes. Do not touch `src/` yet.
-4. When I approve, update `src/config.js` and the `:root` tokens in `src/styles.css` from the brief and continue with stage 3 in CLAUDE.md.
+4. When I approve, update the text in `src/content.ts` from the brief. Do NOT restyle the components; the layout comes from the design prompt.
 
 ## Rules for reference sites
 

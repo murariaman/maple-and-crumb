@@ -1,12 +1,14 @@
 import { useState } from 'react'
 
+export type FormStatus = 'idle' | 'sending' | 'sent' | 'error'
+
 // Posts a form to Formspree, which emails each submission to the form owner.
 // A static site (like GitHub Pages) cannot receive form data itself.
-export function useFormspree(formId) {
+export function useFormspree(formId: string) {
   const notConnected = !formId || formId.startsWith('YOUR_')
-  const [status, setStatus] = useState('idle') // idle | sending | sent | error
+  const [status, setStatus] = useState<FormStatus>('idle')
 
-  async function submit(form, extra = {}) {
+  async function submit(form: HTMLFormElement, extra: Record<string, string> = {}) {
     if (notConnected) return false
     setStatus('sending')
     try {

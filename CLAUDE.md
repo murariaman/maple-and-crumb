@@ -9,7 +9,7 @@ It deploys to GitHub Pages every time `main` is pushed.
 
 ## Rules (always follow)
 - Keep it one page with ONE call to action. Do not add pages, a router, or a backend.
-- Business facts live in `src/config.js`. Brand colors and fonts live in `:root` at the top of `src/styles.css`. Change those first.
+- All the words on the page live in `src/content.ts`. The look comes from a fixed design prompt (React + TypeScript + Tailwind + Framer Motion): change TEXT in `content.ts`, do not restyle or rewrite the components unless I ask.
 - Never invent facts about the business (hours, prices, awards, reviews). If a fact is missing, leave a clear placeholder and tell me.
 - Never put passwords, API keys, or real customer data in any file.
 - Do not edit `.github/workflows/deploy.yml` unless I ask.
@@ -34,23 +34,23 @@ Tip: the interview and design thinking work best on the strongest model. In Clau
 > I want my landing page to feel like [paste a link or describe a screenshot]. List what makes it work (layout, spacing, type, color) in 5 bullets. Do not change any code yet.
 
 **2. Brand** - make it yours.
-> Read CLAUDE.md. My business is [name], we sell [what], our customers are [who]. Update the brand section here, then update `src/config.js` and the `:root` tokens in `src/styles.css` to match. Keep one offer and one call to action.
+> Read CLAUDE.md. My business is [name], we sell [what], our customers are [who]. Update the brand section here, then rewrite the text in `src/content.ts` to match. Do not change the components or styling. Keep one offer and one call to action.
 
 (If you have the UI/UX Pro Max skill installed, add: "Use the ui-ux-pro-max skill to propose a palette and font pairing first.")
 
 **3. Animate** - add one tasteful motion.
 > Add one animated section to the page using [a component from React Bits / your own idea], for example [a text reveal on the headline]. Keep it under 60 lines, make it respect prefers-reduced-motion, and do not slow the page down.
 
-React Bits (https://www.reactbits.dev) is the free animation library. Install one component with a command like `npx shadcn@latest add @react-bits/SplitText-JS-CSS`. Use the **JS-CSS** variant: this project uses plain CSS, not Tailwind. Pick ONE signature animation, not five. Read the component's page for its license and any extra packages it installs, and tell me what changed.
+React Bits (https://www.reactbits.dev) is the free animation library. Install one component with a command like `npx shadcn@latest add @react-bits/SplitText-TS-TW`. This project uses TypeScript + Tailwind, so use the **TS-TW** variant (for example `@react-bits/Magnet-TS-TW`). Pick ONE signature animation, not five. Read the component's page for its license and any extra packages it installs, and tell me what changed.
 
 **4. Feedback** - connect the form.
-> My Formspree form ID is [ID]. Put it in `FORM_ID` in `src/config.js`. Then run the site and show me how to test the form.
+> My Formspree form ID is [ID]. Put it in `ORDER_FORM_ID` (orders) or `FEEDBACK_FORM_ID` (feedback) in `src/content.ts`. Then run the site and show me how to test the form.
 
 **5. Publish** - go live.
 > Run `npm run build`. If it passes, commit everything with the message "Update site" and push to main. Then tell me where to find the published URL (GitHub repo > Actions, then Settings > Pages).
 
 ## Troubleshooting
 - Page is blank after publishing: confirm Settings > Pages > Source is "GitHub Actions", then re-run the workflow.
-- Form says "not connected": `FORM_ID` in `src/config.js` is still `YOUR_FORM_ID`.
+- Form says "not connected": `ORDER_FORM_ID` / `FEEDBACK_FORM_ID` in `src/content.ts` are still the `YOUR_...` placeholders.
 - Form works locally but not live: confirm the Formspree email address (check your inbox for a confirmation message).
 - Anything else: paste the exact error into Claude Code and ask "what does this mean and how do I fix it?"

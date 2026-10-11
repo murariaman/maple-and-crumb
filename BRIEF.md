@@ -1,5 +1,7 @@
 # BRIEF - Maple & Crumb Bakery (fictional)
 
+> **Update (v3):** the look is now the free MotionSites "3D Portfolio" design prompt, used as given (React, TypeScript, Tailwind, Framer Motion). Only the text in `src/content.ts` changes. The "Look and feel", palette, type and motion-plan sections below describe the earlier v2 direction and are superseded; the business, menu, orders, FAQ and avoid lists still apply.
+
 Written from the `/brief` interview. Status: **draft, awaiting owner approval**.
 
 ## Business
@@ -108,4 +110,4 @@ Everything respects reduced-motion settings and must not slow the page.
 - Participants who want a MotionSites prompt must copy it themselves from the site. We never put their prompt text in the starter repo or on slides.
 - Confirm the contact choice: email-us link only, no newsletter (the "1,2" answer was ambiguous).
 - Confirm font availability (Young Serif, Instrument Sans) at build time.
-- Create the shared bakery mailbox and the Formspree forms; paste the form IDs into `src/config.js`.
+- Create the shared bakery mailbox and the Formspree forms; paste the form IDs into `src/content.ts`.
