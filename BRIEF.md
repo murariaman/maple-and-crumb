@@ -20,7 +20,20 @@ Warm, witty, local. Short sentences, a little humor, never salesy. Example regis
 - Palette: **cream, espresso and one blue pop** (hex values below, contrast to be verified in the build).
 - Type: **chunky soft serif headlines + clean sans.** Avoid the most common AI pairing; choose a distinctive serif.
 - Imagery: **none yet.** Use type, color and simple drawn SVG shapes. Leave clearly marked slots for real photos later.
-- References (traits only, nothing copied): a MotionSites hero style (item to be named by owner) and React Bits for animation.
+- References (traits only, nothing copied): MotionSites free items **"3D Portfolio"** and **"Orbis NFT"** for the hero, and React Bits for animation. See "Reference traits" below.
+
+### Reference traits (what we borrow, and what we do NOT)
+Borrow:
+- **Oversized headline as the hero object**, with a central character that overlaps or sits against it (3D Portfolio).
+- **A character that reacts to the cursor** (3D Portfolio's face appears to follow the pointer). We build our own: a drawn SVG croissant mascot whose eyes follow the cursor.
+- **One italic or script accent word inside a bold headline** (Orbis NFT), for the "witty" voice.
+- **Tiny, quiet caption text against huge type** for scale contrast.
+- **Sparse navigation spread across the top**, with a single pill call to action.
+
+Do NOT borrow:
+- Their dark, space or chrome color schemes, their 3D-rendered characters or planets, or any NFT subject matter.
+- Gradient buttons or gradient headline fills (we avoid gradients).
+- Any of their prompt text, images, video or code. Their prompts may be used by the person who copied them, but never shared or shown.
 
 ### Palette
 | Token | Hex | Use |
@@ -69,7 +82,7 @@ Prices: **not shown (TBD).** The page states that no payment is taken.
 Everything respects reduced-motion settings and must not slow the page.
 
 ## What will make this NOT look generic
-1. **Hero is not centered.** Left-aligned oversized headline with an asymmetric drawn croissant/sun shape on the right.
+1. **Hero is not a centered block of text.** An oversized headline interacts with a drawn croissant mascot whose eyes follow the cursor, with one italic accent word in the headline.
 2. **One blue accent on a warm base.** No terracotta, no butter-yellow, no gradient blobs.
 3. **A distinctive serif**, not the common default, with large scale contrast between headline and body.
 4. **A menu that is not three identical rounded cards.** Use a ruled, menu-board style list with the quantity stepper in each row.
@@ -91,7 +104,8 @@ Everything respects reduced-motion settings and must not slow the page.
 5. How do I give feedback? Use the form at the bottom of the page.
 
 ## Open questions
-- Which free MotionSites item is the hero reference? (Owner to name it. Their paid prompt text must not be copied or shown.)
+- Hero references chosen: MotionSites "3D Portfolio" and "Orbis NFT" (both marked with the copy icon, which appears to mean free; crown icon appears to mean premium). Traits only. We write our own prompts.
+- Participants who want a MotionSites prompt must copy it themselves from the site. We never put their prompt text in the starter repo or on slides.
 - Confirm the contact choice: email-us link only, no newsletter (the "1,2" answer was ambiguous).
 - Confirm font availability (Young Serif, Instrument Sans) at build time.
 - Create the shared bakery mailbox and the Formspree forms; paste the form IDs into `src/config.js`.
