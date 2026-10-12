@@ -11,9 +11,15 @@ export const content = {
 
   hero: {
     // The heading fills the full width in one line, so keep it to about 12 characters.
-    heading: 'Hi, neighbor',
+    heading: 'Maple & Crumb',
     caption: 'maple & crumb, a neighborhood bakery driven by small batches and slow saturdays',
     button: 'Order ahead',
+  },
+
+  // The mascot, "Crumb", pops up in a few places with a short line.
+  mascot: {
+    order: 'Pick something warm!',
+    footer: 'See you Saturday!',
   },
 
   about: {
@@ -36,11 +42,14 @@ export const content = {
   bakes: {
     heading: 'Bakes',
     button: 'Order this',
+    // Add real photos by putting files in public/photos/ and listing three paths per card,
+    // for example photos: ['photos/croissant-1.jpg', 'photos/croissant-2.jpg', 'photos/croissant-3.jpg'].
+    // Until then each card shows labeled "photo slot" placeholders.
     cards: [
       { number: '01', category: 'Pastry', name: 'Butter croissant' },
       { number: '02', category: 'Bread', name: 'Country sourdough' },
       { number: '03', category: 'Sweet', name: 'Cinnamon morning bun' },
-    ],
+    ] as { number: string; category: string; name: string; photos?: string[] }[],
     photoSlot: 'Photo slot',
   },
 

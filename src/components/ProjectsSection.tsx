@@ -4,18 +4,27 @@ import { useRef } from 'react'
 import { content } from '../content'
 import FadeIn from './FadeIn'
 import LiveProjectButton from './LiveProjectButton'
+import SpotlightCard from './SpotlightCard'
+import Astro from './Astro'
 
 const RADIUS = 'rounded-[40px] sm:rounded-[50px] md:rounded-[60px]'
 
-// Honest placeholder until real photos exist.
-function PhotoSlot({ label, height }: { label: string; height: string }) {
+// Honest placeholder until real photos exist. React Bits SpotlightCard adds a glow that follows the cursor.
+function PhotoSlot({ label, height, src, alt }: { label: string; height: string; src?: string; alt: string }) {
+  if (src) {
+    return <img src={src} alt={alt} loading="lazy" className={`w-full object-cover ${RADIUS}`} style={{ height }} />
+  }
   return (
-    <div
-      className={`flex w-full items-end justify-start border border-[#D7E2EA]/20 bg-[#161616] p-6 ${RADIUS}`}
+    <SpotlightCard
+      theme="dark"
+      spotlightColor="#B600A8"
+      ambient={false}
+      intensity={0.6}
+      className={`!flex w-full items-end justify-start !border !border-[#D7E2EA]/20 !bg-[#161616] !p-6 ${RADIUS}`}
       style={{ height }}
     >
       <span className="text-xs font-light uppercase tracking-widest text-[#D7E2EA]/60">{label}</span>
-    </div>
+    </SpotlightCard>
   )
 }
 
@@ -26,9 +35,10 @@ interface CardProps {
   number: string
   category: string
   name: string
+  photos?: string[]
 }
 
-function Card({ index, total, progress, number, category, name }: CardProps) {
+function Card({ index, total, progress, number, category, name, photos = [] }: CardProps) {
   const targetScale = 1 - (total - 1 - index) * 0.03
   const scale = useTransform(progress, [index / total, 1], [1, targetScale])
   const { bakes } = content
@@ -56,11 +66,11 @@ function Card({ index, total, progress, number, category, name }: CardProps) {
 
         <div className="flex gap-3 sm:gap-4 md:gap-6">
           <div className="flex w-[40%] flex-col gap-3 sm:gap-4 md:gap-6">
-            <PhotoSlot label={bakes.photoSlot} height="clamp(130px, 16vw, 230px)" />
-            <PhotoSlot label={bakes.photoSlot} height="clamp(160px, 22vw, 340px)" />
+            <PhotoSlot label={bakes.photoSlot} height="clamp(130px, 16vw, 230px)" src={photos[0]} alt={name} />
+            <PhotoSlot label={bakes.photoSlot} height="clamp(160px, 22vw, 340px)" src={photos[1]} alt={name} />
           </div>
           <div className="w-[60%]">
-            <PhotoSlot label={bakes.photoSlot} height="100%" />
+            <PhotoSlot label={bakes.photoSlot} height="100%" src={photos[2]} alt={name} />
           </div>
         </div>
       </motion.div>
@@ -78,14 +88,17 @@ export default function ProjectsSection() {
       id="bakes"
       className="relative z-10 -mt-10 rounded-t-[40px] bg-[#0C0C0C] px-5 pb-20 pt-20 sm:-mt-12 sm:rounded-t-[50px] sm:px-8 sm:pt-24 md:-mt-14 md:rounded-t-[60px] md:px-10 md:pt-32"
     >
-      <FadeIn y={40}>
-        <h2
-          className="hero-heading mb-16 text-center font-black uppercase leading-none tracking-tight sm:mb-20 md:mb-28"
-          style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
-        >
-          {bakes.heading}
-        </h2>
-      </FadeIn>
+      <div className="relative">
+        <FadeIn y={40}>
+          <h2
+            className="hero-heading mb-16 text-center font-black uppercase leading-none tracking-tight sm:mb-20 md:mb-28"
+            style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
+          >
+            {bakes.heading}
+          </h2>
+        </FadeIn>
+        <Astro className="absolute -top-4 right-0 sm:right-[4%]" />
+      </div>
 
       <div ref={list}>
         {bakes.cards.map((card, i) => (

@@ -5,7 +5,7 @@ import { sectionHeadingStyle } from './formStyles'
 export default function InfoSection() {
   const { info } = content
   return (
-    <section id="hours" className="bg-[#0C0C0C] px-5 pb-20 sm:px-8 sm:pb-24 md:px-10 md:pb-32">
+    <section id="hours" className="relative px-5 pb-20 sm:px-8 sm:pb-24 md:px-10 md:pb-32">
       <div className="mx-auto grid max-w-6xl gap-16 md:grid-cols-2 md:gap-20">
         <FadeIn y={40}>
           <h2 className="hero-heading mb-6 font-black uppercase leading-none tracking-tight" style={sectionHeadingStyle}>

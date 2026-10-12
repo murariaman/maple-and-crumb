@@ -17,7 +17,7 @@ export default function FeedbackSection() {
   }
 
   return (
-    <section id="feedback" className="bg-[#0C0C0C] px-5 pb-24 sm:px-8 md:px-10 md:pb-32">
+    <section id="feedback" className="relative px-5 pb-24 sm:px-8 md:px-10 md:pb-32">
       <div className="mx-auto max-w-3xl">
         <FadeIn y={40}>
           <h2 className="hero-heading mb-4 font-black uppercase leading-none tracking-tight" style={sectionHeadingStyle}>

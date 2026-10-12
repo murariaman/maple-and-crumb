@@ -31,8 +31,41 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+/* Mascot motion: a slow float, and a wave on the raised arm. */
+@keyframes astro-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(2deg);
+  }
+}
+
+@keyframes astro-wave {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-14deg);
+  }
+}
+
+.astro-float {
+  animation: astro-float 5s ease-in-out infinite;
+}
+
+.astro-wave {
+  animation: astro-wave 1.6s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .astro-float,
+  .astro-wave {
+    animation: none;
   }
 }

@@ -5,6 +5,7 @@ import { content, ORDER_FORM_ID } from '../content'
 import { useFormspree } from '../lib/useFormspree'
 import FadeIn from './FadeIn'
 import ContactButton from './ContactButton'
+import Astro from './Astro'
 import { fieldClass, labelClass, sectionHeadingStyle } from './formStyles'
 
 export default function OrderSection() {
@@ -37,15 +38,18 @@ export default function OrderSection() {
   }
 
   return (
-    <section id="order" className="bg-[#0C0C0C] px-5 py-20 sm:px-8 sm:py-24 md:px-10 md:py-32">
-      <div className="mx-auto max-w-6xl">
+    <section id="order" className="relative px-5 py-20 sm:px-8 sm:py-24 md:px-10 md:py-32">
+      <div className="relative mx-auto max-w-6xl">
         <FadeIn y={40}>
           <h2 className="hero-heading mb-6 font-black uppercase leading-none tracking-tight" style={sectionHeadingStyle}>
             {order.heading}
           </h2>
-          <p className="mb-12 max-w-xl font-light text-[#D7E2EA]" style={{ fontSize: 'clamp(1rem, 2vw, 1.35rem)' }}>
-            {order.intro}
-          </p>
+          <div className="mb-12 flex items-end justify-between gap-4">
+            <p className="max-w-xl font-light text-[#D7E2EA]" style={{ fontSize: 'clamp(1rem, 2vw, 1.35rem)' }}>
+              {order.intro}
+            </p>
+            <Astro say={content.mascot.order} flip delay={1.2} className="-mb-4 shrink-0" />
+          </div>
         </FadeIn>
 
         <div className="grid items-start gap-12 lg:grid-cols-[1.4fr_1fr] lg:gap-16">

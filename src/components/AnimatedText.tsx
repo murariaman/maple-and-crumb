@@ -24,7 +24,9 @@ function Char({ char, progress, range }: CharProps) {
 // Each character goes from opacity 0.2 to 1 as you scroll through the paragraph.
 export default function AnimatedText({ text, className }: { text: string; className?: string }) {
   const ref = useRef<HTMLParagraphElement>(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.8', 'end 0.2'] })
+  // Starts a little earlier and finishes sooner than the original ['start 0.8', 'end 0.2'],
+  // so the letters light up closer to where your eyes are.
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.92', 'end 0.55'] })
 
   const words = text.split(' ')
   const total = text.length
