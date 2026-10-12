@@ -2,6 +2,7 @@ import { content } from '../content'
 import FadeIn from './FadeIn'
 import GlareHover from './GlareHover'
 import ShinyText from './ShinyText'
+import Astro from './Astro'
 
 export default function ServicesSection() {
   const { heading, items } = content.menu
@@ -28,7 +29,7 @@ export default function ServicesSection() {
               borderRadius="0px"
               glareColor="#B600A8"
               glareOpacity={0.22}
-              className="flex items-start gap-6 border-b py-8 sm:gap-10 sm:py-10 md:gap-16 md:py-12"
+              className="!flex !items-start !justify-start !border-0 !border-b !border-solid gap-6 py-8 sm:gap-10 sm:py-10 md:gap-16 md:py-12"
               style={{ borderColor: 'rgba(12, 12, 12, 0.15)' }}
             >
               <span
@@ -52,6 +53,10 @@ export default function ServicesSection() {
             </GlareHover>
           </FadeIn>
         ))}
+        {/* Crumb sits at the end of the list, where there is room, and shows up on white thanks to tone="light". */}
+        <div className="mt-10 flex justify-end">
+          <Astro tone="light" say={content.mascot.menu} delay={0.4} />
+        </div>
       </div>
     </section>
   )

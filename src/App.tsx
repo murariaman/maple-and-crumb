@@ -10,8 +10,10 @@ import FeedbackSection from './components/FeedbackSection'
 import Galaxy from './components/Galaxy'
 import ClickSpark from './components/ClickSpark'
 import Astro from './components/Astro'
+import { useReducedMotion } from './lib/useReducedMotion'
 
 export default function App() {
+  const reduced = useReducedMotion()
   return (
     <main className="bg-[#0C0C0C]" style={{ overflowX: 'clip' }}>
       <HeroSection />
@@ -32,6 +34,8 @@ export default function App() {
             glowIntensity={0.2}
             twinkleIntensity={0.35}
             saturation={0.5}
+            disableAnimation={reduced}
+            mouseInteraction={!reduced}
             dpr={1}
           />
         </div>

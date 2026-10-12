@@ -16,6 +16,11 @@ export default function OrderSection() {
   const lines = order.items.filter((item) => (qty[item.id] ?? 0) > 0)
   const total = lines.reduce((sum, item) => sum + (qty[item.id] ?? 0), 0)
 
+  // Crumb reacts to what is in the cart.
+  const { mascot } = content
+  const mascotLine =
+    status === 'sent' ? mascot.orderSent : total === 0 ? mascot.orderEmpty : total < 4 ? mascot.orderSome : mascot.orderLots
+
   function change(id: string, delta: number) {
     setQty((q) => ({ ...q, [id]: Math.min(order.maxPerItem, Math.max(0, (q[id] ?? 0) + delta)) }))
     if (status === 'sent' || status === 'error') setStatus('idle')
@@ -48,7 +53,7 @@ export default function OrderSection() {
             <p className="max-w-xl font-light text-[#D7E2EA]" style={{ fontSize: 'clamp(1rem, 2vw, 1.35rem)' }}>
               {order.intro}
             </p>
-            <Astro say={content.mascot.order} flip delay={1.2} className="-mb-4 shrink-0" />
+            <Astro say={mascotLine} flip delay={1.2} className="-mb-4 shrink-0" />
           </div>
         </FadeIn>
 
@@ -70,7 +75,7 @@ export default function OrderSection() {
                     onClick={() => change(item.id, -1)}
                     disabled={!qty[item.id]}
                     aria-label={`Remove one ${item.name}`}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#D7E2EA] text-[#D7E2EA] transition-colors hover:bg-[#D7E2EA]/10 disabled:opacity-30"
+                    className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border-2 border-[#D7E2EA] text-[#D7E2EA] transition-colors hover:bg-[#D7E2EA]/10 disabled:cursor-not-allowed disabled:opacity-30"
                   >
                     <Minus size={18} />
                   </button>
@@ -82,7 +87,7 @@ export default function OrderSection() {
                     onClick={() => change(item.id, 1)}
                     disabled={(qty[item.id] ?? 0) >= order.maxPerItem}
                     aria-label={`Add one ${item.name}`}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#D7E2EA] text-[#D7E2EA] transition-colors hover:bg-[#D7E2EA]/10 disabled:opacity-30"
+                    className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border-2 border-[#D7E2EA] text-[#D7E2EA] transition-colors hover:bg-[#D7E2EA]/10 disabled:cursor-not-allowed disabled:opacity-30"
                   >
                     <Plus size={18} />
                   </button>

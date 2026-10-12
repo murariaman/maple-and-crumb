@@ -18,7 +18,13 @@ export const content = {
 
   // The mascot, "Crumb", pops up in a few places with a short line.
   mascot: {
-    order: 'Pick something warm!',
+    menu: 'Ask for it warm!',
+    // The order mascot reacts to the cart.
+    orderEmpty: 'Pick something warm!',
+    orderSome: 'Good taste!',
+    orderLots: 'Hungry? I love it.',
+    orderSent: 'Order sent! See you soon.',
+    hours: 'Come say hi!',
     footer: 'See you Saturday!',
   },
 

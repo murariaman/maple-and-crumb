@@ -15,7 +15,7 @@ Do these at home, not at the library. Tick each box.
 - [ ] **4. GitHub account** (free): https://github.com
 - [ ] **5. Make your own copy.** On this repo's GitHub page click **Use this template > Create a new repository**. Make it **Public**. Name it anything.
 - [ ] **6. Turn on publishing.** In your new repo: **Settings > Pages > Source: GitHub Actions**.
-- [ ] **7. Formspree form** (free): sign up at https://formspree.io, click **New form**, and copy the form ID (the short code at the end of the form URL). Check your inbox and confirm your email.
+- [ ] **7. Two Formspree forms** (free): sign up at https://formspree.io, click **New form** twice (one for orders, one for feedback), and copy both form IDs. Check your inbox and confirm your email. Full steps are in `SETUP.md`.
 - [ ] **8. Download your copy.** In a terminal, run (use your own address):
   ```
   git clone https://github.com/YOUR-NAME/YOUR-REPO.git

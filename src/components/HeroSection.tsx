@@ -2,14 +2,32 @@ import { content } from '../content'
 import FadeIn from './FadeIn'
 import ContactButton from './ContactButton'
 import Magnet from './Magnet'
+import DotGrid from './DotGrid'
+import { useReducedMotion } from '../lib/useReducedMotion'
 
 const PORTRAIT =
   'https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png'
 
 export default function HeroSection() {
   const { nav, hero } = content
+  const reduced = useReducedMotion()
   return (
-    <section id="top" className="relative flex h-screen flex-col" style={{ overflowX: 'clip' }}>
+    <section id="top" className="relative isolate flex h-screen flex-col" style={{ overflowX: 'clip' }}>
+      {/* React Bits DotGrid: a faint grid of dots that bounces away from the cursor. Kept dim so the headline stays the star. */}
+      <div className="absolute inset-0 -z-10" aria-hidden="true">
+        <DotGrid
+          dotSize={3}
+          gap={28}
+          baseColor="#2A2232"
+          activeColor="#B600A8"
+          proximity={150}
+          opacity={0.85}
+          clickShock={false}
+          intro={!reduced}
+          mouseInteraction={!reduced}
+          paused={reduced}
+        />
+      </div>
       <FadeIn delay={0} y={-20}>
         <nav aria-label="Sections" className="flex w-full items-center justify-between px-6 pt-6 md:px-10 md:pt-8">
           {nav.map((link) => (

@@ -1,6 +1,7 @@
 import { content } from '../content'
 import FadeIn from './FadeIn'
 import { sectionHeadingStyle } from './formStyles'
+import Astro from './Astro'
 
 export default function InfoSection() {
   const { info } = content
@@ -15,6 +16,7 @@ export default function InfoSection() {
             {info.hours}
           </p>
           <p className="mt-3 font-light text-[#D7E2EA]/70">{info.address}</p>
+          <Astro say={content.mascot.hours} delay={2} className="mt-8" />
         </FadeIn>
 
         <div id="faq">
@@ -27,7 +29,7 @@ export default function InfoSection() {
             {info.faqs.map((faq) => (
               <FadeIn key={faq.q}>
                 <details className="group border-b border-[#D7E2EA]/30 py-4">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium uppercase text-[#D7E2EA] [&::-webkit-details-marker]:hidden">
+                  <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-4 font-medium uppercase text-[#D7E2EA] [&::-webkit-details-marker]:hidden">
                     {faq.q}
                     <span aria-hidden="true" className="text-2xl group-open:hidden">+</span>
                     <span aria-hidden="true" className="hidden text-2xl group-open:inline">−</span>
